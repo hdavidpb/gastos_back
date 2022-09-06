@@ -10,24 +10,23 @@ const listEntities = Object.values(entities);
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      //HEROKU
-      // type: 'postgres',
-      // url: process.env.DATABASE_URL,
-
-      // entities: listEntities,
-      // synchronize: true,
-      // ssl: {
-      //   rejectUnauthorized: false,
-      // },
-
       type: 'postgres',
-      host: 'localhost',
-      port: 5434,
-      username: 'postgres',
-      password: '1234',
-      database: 'postgres',
+      url: process.env.DATABASE_URL,
+
       entities: listEntities,
       synchronize: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+
+      // type: 'postgres',
+      // host: 'localhost',
+      // port: 5434,
+      // username: 'postgres',
+      // password: '1234',
+      // database: 'postgres',
+      // entities: listEntities,
+      // synchronize: true,
     }),
     AuthModule,
     SpendModule,
