@@ -10,24 +10,14 @@ const listEntities = Object.values(entities);
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      // type: 'postgres',
-      // url: process.env.DATABASE_URL,
-
-      // entities: listEntities,
-      // synchronize: true,
-      // ssl: {
-      //   rejectUnauthorized: false,
-      // },
-
       type: 'postgres',
-      host: 'ec2-44-205-63-142.compute-1.amazonaws.com',
-      port: 5432,
-      username: 'uhmadcrdbkxalz',
-      password:
-        '9c260cacf714b4465ee8fb9215eacf08665c3a1192ffd1413bb8ba6781a32a18',
-      database: 'd3abtaikdvqkse',
+      url: process.env.DATABASE_URL,
+
       entities: listEntities,
       synchronize: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     }),
     AuthModule,
     SpendModule,
